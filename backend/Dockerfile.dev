@@ -1,0 +1,11 @@
+FROM maven:3.9.9-eclipse-temurin-21
+
+WORKDIR /app
+EXPOSE 8080
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends inotify-tools \
+    && rm -rf /var/lib/apt/lists/*
+
+CMD ["bash", "/app/dev-run.sh"]
+
